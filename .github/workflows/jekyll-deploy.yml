@@ -9,9 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install ruby
-        run: sudo apt-get install ruby
+        run: |
+          sudo apt-get remove ruby
+          sudo apt-get install ruby
       - name: Install jekyll
-        run: gem install bundler jekyll
+        run: sudo gem install bundler jekyll
       - name: Check out repository code in the master branch
         uses: actions/checkout@v3
         with:
