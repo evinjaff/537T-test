@@ -8,11 +8,10 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '3.1' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
       - name: Install jekyll
         run: sudo gem install bundler jekyll
+      - name: Install webrick
+        run: bundle add webrick
       - name: Check out repository code in the main branch
         uses: actions/checkout@v3
         with:
