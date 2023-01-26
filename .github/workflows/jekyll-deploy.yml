@@ -8,9 +8,9 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Install ruby
-        run: |
-          sudo apt-get install ruby
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.1' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
       - name: Install jekyll
         run: sudo gem install bundler jekyll
       - name: Check out repository code in the main branch
