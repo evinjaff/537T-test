@@ -25,10 +25,8 @@ jobs:
         run: |
           mkdir ../output
           cp -r _site/* ../output/
-          git stash
           git fetch
           git checkout gh-pages
-          git stash pop
           git clean -fd
       - name: Configure Git
         run: |
