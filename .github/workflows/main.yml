@@ -8,10 +8,8 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Install ruby
-        run: sudo apt-get install ruby
-      - name: Install jekyll
-        run: gem install bundler jekyll
+      - name: Install pandoc
+        run: sudo apt-get install pandoc
       - name: Check out repository code in the master branch
         uses: actions/checkout@v3
         with:
@@ -23,19 +21,13 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: ls ~
-      - name: Build site
-        run: bundle exec jekyll build
-      - name: copy around output
-        run: |
-          mkdir ../output
-          cp -r _site/* ../output/
-          git checkout gh-pages
-          git clean -fd
+      - name: Run the shell script to checkout and publish the website into the docs folder
+        run: sh publish-ghactions.sh
       - name: Configure Git
         run: |
           git config --local user.email "github-actions[bot]@jaffboys.com"
           git config --local user.name "github-actions[bot]"
-      - name: Git pull
+      - name: Git pull 
         run: git pull
       - name: Checkout to gh-pages
         run: git checkout gh-pages
@@ -44,3 +36,7 @@ jobs:
       - name: Add files
         run: git add .
       - name: commit and push files
+        run: |
+          git commit -a -m "Publish Blog"
+          git push
+      - run: echo "🍏 This job's status is ${{ job.status }}."
