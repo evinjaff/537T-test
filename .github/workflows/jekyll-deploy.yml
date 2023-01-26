@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Install jekyll
         run: sudo gem install bundler jekyll
+      - name: Get ruby version
+        run: ruby -v
       - name: Check out repository code in the main branch
         uses: actions/checkout@v3
         with:
