@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Install jekyll
         run: sudo gem install bundler jekyll
-      - name: Install webrick
-        run: bundle add webrick
       - name: Check out repository code in the main branch
         uses: actions/checkout@v3
         with:
@@ -23,6 +21,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: ls ~
+      - name: Install webrick
+        run: bundle add webrick
       - name: Build site
         run: bundle exec jekyll build
       - name: copy around output
