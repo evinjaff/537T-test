@@ -8,10 +8,6 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Install jekyll
-        run: sudo gem install bundler jekyll
-      - name: Get ruby version
-        run: ruby -v
       - name: Check out repository code in the main branch
         uses: actions/checkout@v3
         with:
@@ -23,8 +19,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: ls ~
-      - name: Build site
-        run: bundle exec jekyll build
+      - name: Build Jekyll for GitHub Pages
+        uses: actions/jekyll-build-pages@v1.0.6
       - name: copy around output
         run: |
           mkdir ../output
