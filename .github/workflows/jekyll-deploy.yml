@@ -27,7 +27,7 @@ jobs:
           cp -r _site/* ../output/
           git fetch
           git checkout gh-pages
-          git clean -fd
+          sudo git clean -fd
       - name: Configure Git
         run: |
           git config --local user.email "github-actions[bot]@jaffboys.com"
