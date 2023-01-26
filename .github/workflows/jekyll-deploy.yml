@@ -10,7 +10,6 @@ jobs:
     steps:
       - name: Install ruby
         run: |
-          sudo apt-get remove ruby
           sudo apt-get install ruby
       - name: Install jekyll
         run: sudo gem install bundler jekyll
