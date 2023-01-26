@@ -25,6 +25,7 @@ jobs:
         run: |
           mkdir ../output
           cp -r _site/* ../output/
+          git fetch
           git checkout gh-pages
           git clean -fd
       - name: Configure Git
